@@ -70,7 +70,7 @@ newTaskForm.addEventListener('submit', e => {
     if (taskName == null || taskName === '') return
     const task = createTask(taskName)
     newTaskInput.value = null
-    const selectedList = lists.find(find => list.id === selectedListId)
+    const selectedList = lists.find(list => list.id === selectedListId)
     selectedList.tasks.push(task)
     saveAndRender()
 })
@@ -103,7 +103,7 @@ function render() {
     clearElement(listsContainer)
     renderLists()
 
-    const selectedList = lists.find(find => list.id === selectedListId)
+    const selectedList = lists.find(list => list.id === selectedListId)
     if (selectedListId == null) {
         listDisplayContainer.style.display = 'none'
     } else {
@@ -132,7 +132,7 @@ function renderTasks(selectedList) {
 
 
 function renderTaskCount(selectedList) {
-    const incompleteTasks = selectedList.tasks.filter(task => !task.complete).length
+    const incompleteTaskCount = selectedList.tasks.filter(task => !task.complete).length
     const taskString = incompleteTaskCount === 1 ? "task" : "tasks"
     listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`
 }
